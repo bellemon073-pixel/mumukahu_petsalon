@@ -550,9 +550,6 @@ body{
       <div class="label">寵物姓名</div>
       <input id="petName" class="input" placeholder="請輸入寵物姓名">
 
-      <div class="label">寵物品種</div>
-      <input id="petBreed" class="input" placeholder="例：比熊犬">
-
       <div class="label">寵物性別</div>
       <div class="choiceRow" id="petSexRow">
         <label class="choice"><input type="radio" name="petSex" value="男生" checked> 男生</label>
@@ -561,13 +558,13 @@ body{
 
       <div class="grid2" style="margin-top:10px;">
         <div>
-          <div class="label" style="margin:0 0 8px; font-size:16px;">寵物年齡</div>
-          <input id="petAge" class="input" inputmode="numeric" pattern="[0-9]*" placeholder="例：3">
+          <div class="label" style="margin:0 0 8px; font-size:16px;">寵物生日 <span style="color:var(--muted); font-weight:700; font-size:14px;">（選填）</span></div>
+          <input id="petBirthday" class="input" type="text" name="petBirthday"
+            placeholder="YYYY/MM/DD（選填）" inputmode="numeric" pattern="\d{4}/\d{1,2}/\d{1,2}">
         </div>
         <div>
-          <div class="label" style="margin:0 0 8px; font-size:16px;">寵物生日</div>
-          <input id="petBirthday" class="input" type="text" name="petBirthday"
-            placeholder="YYYY/MM/DD" inputmode="numeric" pattern="\d{4}/\d{1,2}/\d{1,2}">
+          <div class="label" style="margin:0 0 8px; font-size:16px;">寵物年齡</div>
+          <input id="petAge" class="input" inputmode="numeric" pattern="[0-9]*" placeholder="自動計算">
         </div>
       </div>
 
@@ -585,18 +582,44 @@ body{
       <div class="label">體重（公斤）</div>
       <input id="petWeight" class="input" inputmode="decimal" placeholder="例：6.5">
 
+      <div class="label">寵物品種</div>
+      <input id="petBreed" class="input" placeholder="例：比熊犬 / 米克斯 / 英短">
+
+
+      <div class="label">寵物個性</div>
+      <div class="choiceRow" id="temperamentTypeRow">
+        <label class="choice"><input type="radio" name="temperamentType" value="狗" checked> 狗</label>
+        <label class="choice"><input type="radio" name="temperamentType" value="貓"> 貓</label>
+      </div>
+
       <div class="label">寵物個性（可複選）</div>
-      <div class="checkGrid" id="temperamentGrid">
-        <label class="ck"><input type="checkbox" class="pt" value="親人">親人</label>
-        <label class="ck"><input type="checkbox" class="pt" value="不親人">不親人</label>
-        <label class="ck"><input type="checkbox" class="pt" value="親狗">親狗</label>
-        <label class="ck"><input type="checkbox" class="pt" value="不親狗">不親狗</label>
-        <label class="ck"><input type="checkbox" class="pt" value="不會咬人">不會咬人</label>
-        <label class="ck"><input type="checkbox" class="pt" value="會咬人">會咬人</label>
-        <label class="ck"><input type="checkbox" class="pt" value="不會咬狗">不會咬狗</label>
-        <label class="ck"><input type="checkbox" class="pt" value="會咬狗">會咬狗</label>
-        <label class="ck"><input type="checkbox" class="pt" value="容易緊張">容易緊張</label>
-        <label class="ck"><input type="checkbox" class="pt" value="過度焦慮">過度焦慮</label>
+      <div class="checkGrid" id="dogTemperamentGrid">
+        <label class="ck"><input type="checkbox" class="pt dogPt" value="親人">親人</label>
+        <label class="ck"><input type="checkbox" class="pt dogPt" value="不親人">不親人</label>
+        <label class="ck"><input type="checkbox" class="pt dogPt" value="親狗">親狗</label>
+        <label class="ck"><input type="checkbox" class="pt dogPt" value="不親狗">不親狗</label>
+        <label class="ck"><input type="checkbox" class="pt dogPt" value="不會咬人">不會咬人</label>
+        <label class="ck"><input type="checkbox" class="pt dogPt" value="會咬人">會咬人</label>
+        <label class="ck"><input type="checkbox" class="pt dogPt" value="不會咬狗">不會咬狗</label>
+        <label class="ck"><input type="checkbox" class="pt dogPt" value="會咬狗">會咬狗</label>
+        <label class="ck"><input type="checkbox" class="pt dogPt" value="容易緊張">容易緊張</label>
+        <label class="ck"><input type="checkbox" class="pt dogPt" value="過度焦慮">過度焦慮</label>
+      </div>
+
+      <div class="checkGrid hidden" id="catTemperamentGrid">
+        <label class="ck"><input type="checkbox" class="pt catPt" value="親人">親人</label>
+        <label class="ck"><input type="checkbox" class="pt catPt" value="不親人（不攻擊）">不親人（不攻擊）</label>
+        <label class="ck fullRow"><input type="checkbox" class="pt catPt" value="不親人（可能會攻擊）">不親人（可能會攻擊）</label>
+
+        <label class="ck"><input type="checkbox" class="pt catPt" value="不怕水">不怕水</label>
+        <label class="ck"><input type="checkbox" class="pt catPt" value="怕水（不會逃）">怕水（不會逃）</label>
+        <label class="ck"><input type="checkbox" class="pt catPt" value="怕水（會逃）">怕水（會逃）</label>
+        <label class="ck fullRow"><input type="checkbox" class="pt catPt" value="怕水（可能會攻擊）">怕水（可能會攻擊）</label>
+
+        <label class="ck"><input type="checkbox" class="pt catPt" value="不怕風">不怕風</label>
+        <label class="ck"><input type="checkbox" class="pt catPt" value="怕風（不會逃）">怕風（不會逃）</label>
+        <label class="ck"><input type="checkbox" class="pt catPt" value="怕風（會逃）">怕風（會逃）</label>
+        <label class="ck fullRow"><input type="checkbox" class="pt catPt" value="怕風（可能會攻擊）">怕風（可能會攻擊）</label>
       </div>
 
       <div style="margin-top:10px;">
@@ -739,6 +762,8 @@ body{
 
   const petName = document.getElementById("petName");
   const petBreed = document.getElementById("petBreed");
+  const dogTemperamentGrid = document.getElementById("dogTemperamentGrid");
+  const catTemperamentGrid = document.getElementById("catTemperamentGrid");
   const petAge = document.getElementById("petAge");
   const petBirthday = document.getElementById("petBirthday");
 
@@ -753,7 +778,8 @@ body{
 
   const medicalNote = document.getElementById("medicalNote");
 
-  const ptBoxes = Array.from(document.querySelectorAll(".pt"));
+  const dogPtBoxes = Array.from(document.querySelectorAll(".dogPt"));
+  const catPtBoxes = Array.from(document.querySelectorAll(".catPt"));
   const petTemperamentNote = document.getElementById("petTemperamentNote");
 
   const mhNone = document.getElementById("mh_none");
@@ -823,6 +849,27 @@ body{
     if(d) out += "/" + d;
     return out;
   }
+  function calcAgeFromBirthday(v){
+    if(!isValidDateString(v)) return "";
+    const m = /^(\d{4})\/(\d{1,2})\/(\d{1,2})$/.exec(v);
+    const birth = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+    const today = new Date();
+    let age = today.getFullYear() - birth.getFullYear();
+    const hasNotHadBirthday =
+      today.getMonth() < birth.getMonth() ||
+      (today.getMonth() === birth.getMonth() && today.getDate() < birth.getDate());
+    if(hasNotHadBirthday) age--;
+    return age >= 0 ? String(age) : "";
+  }
+
+  function updateAgeFromBirthday(){
+    if(!petBirthday || !petAge) return;
+    const birthdayText = (petBirthday.value || "").trim();
+    if(!birthdayText) return;
+    const ageText = calcAgeFromBirthday(birthdayText);
+    if(ageText) petAge.value = ageText;
+  }
+
   if(petBirthday){
     petBirthday.addEventListener("input", (e) => {
       const start = e.target.selectionStart || 0;
@@ -831,7 +878,9 @@ body{
       if(before.length < e.target.value.length) {
         e.target.setSelectionRange(Math.min(start+1, e.target.value.length), Math.min(start+1, e.target.value.length));
       }
+      updateAgeFromBirthday();
     });
+    petBirthday.addEventListener("blur", updateAgeFromBirthday);
   }
 
   function getRadio(name){
@@ -850,6 +899,22 @@ body{
   }
   document.querySelectorAll('input[name="isOwnerSelf"]').forEach(r => r.addEventListener("change", refreshOwnerRelation));
   refreshOwnerRelation();
+
+  function refreshTemperamentType(){
+    const type = getRadio("temperamentType") || "狗";
+    const isCat = (type === "貓");
+    setHidden(dogTemperamentGrid, isCat);
+    setHidden(catTemperamentGrid, !isCat);
+
+    if(isCat){
+      dogPtBoxes.forEach(b => b.checked = false);
+    }else{
+      catPtBoxes.forEach(b => b.checked = false);
+    }
+  }
+
+  document.querySelectorAll('input[name="temperamentType"]').forEach(r => r.addEventListener("change", refreshTemperamentType));
+  refreshTemperamentType();
 
   function refreshChip(){
     const has = getRadio("chipHas");
@@ -916,7 +981,9 @@ body{
 
   function getPetTemperament(){
     const arr = [];
-    ptBoxes.forEach(el => { if(el.checked) arr.push(el.value); });
+    const type = getRadio("temperamentType") || "狗";
+    const boxes = (type === "貓") ? catPtBoxes : dogPtBoxes;
+    boxes.forEach(el => { if(el.checked) arr.push(el.value); });
     return arr;
   }
 
@@ -1050,8 +1117,9 @@ body{
       petName: requireValue(petName, "寵物姓名"),
       petBreed: requireValue(petBreed, "寵物品種"),
       petSex: getRadio("petSex") || "男生",
+      temperamentType: getRadio("temperamentType") || "狗",
       petAge: requireValue(petAge, "寵物年齡"),
-      petBirthday: requireValue(petBirthday, "寵物生日"),
+      petBirthday: (petBirthday?.value || "").trim(),
       petWeight: requireValue(petWeight, "體重"),
       petTemperament: getPetTemperament(),
       petTemperamentNote: (petTemperamentNote?.value || "").trim(),
@@ -1080,8 +1148,8 @@ body{
       return;
     }
 
-    if(!isValidDateString(data.petBirthday)){
-      setError("寵物生日格式不正確，請輸入有效日期");
+    if(data.petBirthday && !isValidDateString(data.petBirthday)){
+      setError("寵物生日格式不正確，請輸入有效日期，或留空不填");
       petBirthday.focus();
       resetSubmit();
       return;
@@ -1159,10 +1227,11 @@ Email：${data.ownerEmail}
 寵物名字：${data.petName}
 品種：${data.petBreed}
 性別：${data.petSex}
+生日：${data.petBirthday || "（未填）"}
 年齡：${data.petAge}
-生日：${data.petBirthday}
 體重(公斤)：${data.petWeight}
-寵物個性：${ptText}
+寵物個性：${data.temperamentType}
+個性勾選：${ptText}
 個性其他應注意：${ptNoteText}
 晶片：${chipText}
 食物過敏：${allergyText}
